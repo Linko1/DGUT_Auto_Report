@@ -4,6 +4,7 @@ from dgut_requests.dgut import dgutIllness, requests
 from retry import retry
 import gevent
 
+requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += 'HIGH:!DH:!aNULL'
 
 @retry(tries=50, delay=2, backoff=2, max_delay=30)
 def clock(u: dgutIllness, key: str=None) -> None:
